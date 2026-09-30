@@ -65,10 +65,45 @@
               </xs:appinfo>
             </xs:annotation>
           </xs:enumeration>
+          <xs:enumeration value="CTIS">
+            <xs:annotation>
+              <xs:appinfo>
+                <Alias Name="C221530" Context="nci:ExtCodeID"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="ClinicalTrials.gov">
+            <xs:annotation>
+              <xs:appinfo>
+                <Alias Name="C124233" Context="nci:ExtCodeID"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
           <xs:enumeration value="D-U-N-S NUMBER">
             <xs:annotation>
               <xs:appinfo>
                 <Alias Name="C134003" Context="nci:ExtCodeID"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="EUDRAVIGILANCE">
+            <xs:annotation>
+              <xs:appinfo>
+                <Alias Name="C221532" Context="nci:ExtCodeID"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="EudraCT">
+            <xs:annotation>
+              <xs:appinfo>
+                <Alias Name="C132782" Context="nci:ExtCodeID"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="GENC">
+            <xs:annotation>
+              <xs:appinfo>
+                <Alias Name="C221529" Context="nci:ExtCodeID"/>
               </xs:appinfo>
             </xs:annotation>
           </xs:enumeration>
@@ -86,6 +121,20 @@
               </xs:appinfo>
             </xs:annotation>
           </xs:enumeration>
+          <xs:enumeration value="ISO 21090">
+            <xs:annotation>
+              <xs:appinfo>
+                <Alias Name="C81895" Context="nci:ExtCodeID"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="ISO 3166">
+            <xs:annotation>
+              <xs:appinfo>
+                <Alias Name="C209537" Context="nci:ExtCodeID"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
           <xs:enumeration value="LOINC">
             <xs:annotation>
               <xs:appinfo>
@@ -100,10 +149,24 @@
               </xs:appinfo>
             </xs:annotation>
           </xs:enumeration>
+          <xs:enumeration value="MeSH">
+            <xs:annotation>
+              <xs:appinfo>
+                <Alias Name="C82845" Context="nci:ExtCodeID"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
           <xs:enumeration value="MedDRA">
             <xs:annotation>
               <xs:appinfo>
                 <Alias Name="C43820" Context="nci:ExtCodeID"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="PubMed">
+            <xs:annotation>
+              <xs:appinfo>
+                <Alias Name="C42881" Context="nci:ExtCodeID"/>
               </xs:appinfo>
             </xs:annotation>
           </xs:enumeration>
@@ -139,6 +202,13 @@
             <xs:annotation>
               <xs:appinfo>
                 <Alias Name="C49475" Context="nci:ExtCodeID"/>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="jRCT">
+            <xs:annotation>
+              <xs:appinfo>
+                <Alias Name="C221531" Context="nci:ExtCodeID"/>
               </xs:appinfo>
             </xs:annotation>
           </xs:enumeration>
@@ -201,7 +271,7 @@
           </xs:appinfo>
         </xs:annotation>
       </xs:enumeration>
-       <xs:enumeration value="INTERVENTIONS">
+      <xs:enumeration value="INTERVENTIONS">
         <xs:annotation>
           <xs:appinfo>
             <Alias Name="C103374" Context="nci:ExtCodeID"/>
@@ -226,6 +296,13 @@
         <xs:annotation>
           <xs:appinfo>
             <Alias Name="C123454" Context="nci:ExtCodeID"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="REFERENCE DATA STRUCTURE">
+        <xs:annotation>
+          <xs:appinfo>
+            <Alias Name="C204611" Context="nci:ExtCodeID"/>
           </xs:appinfo>
         </xs:annotation>
       </xs:enumeration>
@@ -479,6 +556,13 @@
           </xs:appinfo>
         </xs:annotation>
       </xs:enumeration>
+      <xs:enumeration value="ADaMIG-MD">
+        <xs:annotation>
+          <xs:appinfo>
+            <Alias Name="C214532" Context="nci:ExtCodeID"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
       <xs:enumeration value="BIMO">
         <xs:annotation>
           <xs:appinfo>
@@ -532,6 +616,34 @@
         <xs:annotation>
           <xs:appinfo>
             <Alias Name="C170556" Context="nci:ExtCodeID"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="SENDIG-GENETOX">
+        <xs:annotation>
+          <xs:appinfo>
+            <Alias Name="C199687" Context="nci:ExtCodeID"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="TIG-ADaM">
+        <xs:annotation>
+          <xs:appinfo>
+            <Alias Name="C228185" Context="nci:ExtCodeID"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="TIG-SDTM">
+        <xs:annotation>
+          <xs:appinfo>
+            <Alias Name="C228184" Context="nci:ExtCodeID"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="TIG-SEND">
+        <xs:annotation>
+          <xs:appinfo>
+            <Alias Name="C228183" Context="nci:ExtCodeID"/>
           </xs:appinfo>
         </xs:annotation>
       </xs:enumeration>
@@ -596,21 +708,21 @@
     <xs:union>
       <xs:simpleType>
         <xs:restriction base="odm:text">
-          <xs:enumeration value="Draft">
+          <xs:enumeration value="DRAFT">
             <xs:annotation>
               <xs:appinfo>
                 <Alias Name="C172453" Context="nci:ExtCodeID"/>
               </xs:appinfo>
             </xs:annotation>
           </xs:enumeration>
-          <xs:enumeration value="Final">
+          <xs:enumeration value="FINAL">
             <xs:annotation>
               <xs:appinfo>
                 <Alias Name="C172455" Context="nci:ExtCodeID"/>
               </xs:appinfo>
             </xs:annotation>
           </xs:enumeration>
-          <xs:enumeration value="Provisional">
+          <xs:enumeration value="PROVISIONAL">
             <xs:annotation>
               <xs:appinfo>
                 <Alias Name="C172454" Context="nci:ExtCodeID"/>
@@ -645,6 +757,13 @@
         <xs:annotation>
           <xs:appinfo>
             <Alias Name="C170454" Context="nci:ExtCodeID"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="TCG">
+        <xs:annotation>
+          <xs:appinfo>
+            <Alias Name="C228186" Context="nci:ExtCodeID"/>
           </xs:appinfo>
         </xs:annotation>
       </xs:enumeration>
