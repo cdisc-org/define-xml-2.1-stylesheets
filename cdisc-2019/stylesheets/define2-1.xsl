@@ -57,7 +57,7 @@
   <!-- Author:      Lex Jansen, CDISC Data Exchange Standards Team                                               -->
   <!--                                                                                                           -->  
   <!-- Changes:                                                                                                  -->
-  <!--   2019-02-11 - Fixed window title in browser                                                                               -->
+  <!--   2026-11-20 - Table names and column headers float at the top of the window while a table scrolls        -->
   <!--   2018-11-21 - Code cleanup                                                                               -->
   <!--   2018-10-24 - Added PublishingSet to Standard display in CodeLists (Draft Define-XML 2.1)                -->
   <!--   2018-08-09 - Fixed issue when there is no ItemGroupDef/@def:ArchiveLocationID                           -->
@@ -283,7 +283,7 @@
         <xsl:call-template name="generateCSS"/>
         <xsl:text>&#xA;  </xsl:text>
       </head>
-      <body onload="reset_menus();">
+      <body onload="reset_menus(); sticky_headers();">
 
         <xsl:call-template name="generateMenu"/>
         <xsl:call-template name="generateMain"/>
@@ -3627,6 +3627,24 @@ function collapse_all_vlm() {
 }
 
 /**
+ * float each table's column headers just below its floating name (the table's caption, or the
+ * codelist caption before it) by setting the table's --caption-height.
+ */
+function sticky_headers() {
+  var tables = document.getElementsByTagName('TABLE');
+  for (var i=0; i < tables.length; i++) {
+    var caption = tables[i].caption;
+    if (!caption) {
+      caption = tables[i].previousElementSibling;
+      if (caption && !caption.className.match('codelist-caption')) { caption = null; }
+    }
+    var height = caption ? caption.getBoundingClientRect().height : 0;
+    tables[i].style.setProperty('--caption-height', height + 'px');
+  }
+}
+window.addEventListener('resize', sticky_headers);
+
+/**
  * Open external documents (PDFs, ...) in a new window.
  */
 document.onclick = function(e)
@@ -3789,7 +3807,7 @@ document.onclick = function(e)
         position: absolute;
         left: 22%;
         top: 0px;
-        overflow: auto;
+        overflow: visible;
         background-color: <xsl:value-of select="$COLOR_MENU_BODY_BACKGROUND" />;
         color: <xsl:value-of select="$COLOR_MENU_BODY_FOREGROUND" />;
         float: none !important;
@@ -4009,6 +4027,38 @@ document.onclick = function(e)
         text-align: right;
       }
       
+      /* a table's name and column headers float at the top of the window while the table is
+         scrolled; sticky_headers() sets each table's --caption-height, the name's height */
+      table caption,
+      div.codelist-caption{
+        position: sticky;
+        top: 0px;
+        z-index: 2;
+        margin: 0px;
+        background-color: <xsl:value-of select="$COLOR_MENU_BODY_BACKGROUND" />;
+      }
+      table caption{
+        padding: 10px 0px;
+      }
+      div.codelist-caption{
+        padding: 20px 0px 10px 0px;
+      }
+      table tr.header th{
+        position: sticky;
+        /* 1px under the name: a floating cell doesn't paint its collapsed top border, which left a see-through line */
+        top: calc(var(--caption-height, 1px) - 1px);
+        z-index: 1;
+        background-color: <xsl:value-of select="$COLOR_TR_HEADER_BACK" />;
+      }
+      h1#ARM_Table_Summary{
+        position: sticky;
+        top: 0px;
+        z-index: 2;
+        margin: 0px;
+        padding: 10px 0px;
+        background-color: <xsl:value-of select="$COLOR_MENU_BODY_BACKGROUND" />;
+      }
+
       tr.tablerowodd{
         background-color: <xsl:value-of select="$COLOR_TABLEROW_ODD" />;
       }
@@ -4282,6 +4332,11 @@ document.onclick = function(e)
         #main{
           left: 2cm;
           float: none !important;
+        }
+        table caption,
+        div.codelist-caption,
+        table tr.header th{
+          position: static;
         }
         span.prefix{
           font-weight: normal;
